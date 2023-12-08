@@ -1,4 +1,4 @@
-FROM php:8.0-fpm
+FROM php:8.2.11-fpm
 # Set working directory
 WORKDIR /var/www/html
 RUN set -eux; \
@@ -56,12 +56,13 @@ chmod +x wp-cli.phar && \
 mv wp-cli.phar /usr/local/bin/wp
 
 
-#Removing all the contents inside webroot directory
-RUN rm -rf /var/www/html/*
-
 #Installing drush
 RUN composer global require drush/drush && \
     composer global update
+    
+#Removing all the contents inside webroot directory
+RUN rm -rf /var/www/html/*
+
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
 CMD ["php-fpm"]
