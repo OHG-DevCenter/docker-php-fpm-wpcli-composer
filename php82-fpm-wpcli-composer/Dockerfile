@@ -5,6 +5,7 @@ RUN set -eux; \
     apt-get update; \
     apt-get upgrade -y; \
     apt-get install -y --no-install-recommends \
+            unzip \
             curl \
             libmemcached-dev \
             libz-dev \
